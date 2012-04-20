@@ -12,4 +12,8 @@ Puppet::Type.newtype(:volume_group) do
              using the physical_volume resource type."
     end
 
+    #autorequire do
+       #self[:physical_volumes]
+    #end
+
 end

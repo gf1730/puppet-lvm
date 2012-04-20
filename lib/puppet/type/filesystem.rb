@@ -23,4 +23,9 @@ Puppet::Type.newtype(:filesystem) do
         desc "Params for the mkfs command. eg. -l internal,agcount=x"
     end
 
+    autorequire(:logical_volume) do
+        (vgname, lvname) = self[:name].split(/\//)[-2..-1]
+        resource = catalog.resource(:logical_volume, lvname) and resource[:volume_group] = vgname
+    end
+
 end

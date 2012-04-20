@@ -35,4 +35,9 @@ Puppet::Type.newtype(:logical_volume) do
             end
         end
     end
+
+    autorequire(:volume_group) do
+       self[:volume_group]
+    end
+
 end
